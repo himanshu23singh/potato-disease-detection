@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Potato Disease Detection</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- Header -->
+            <div class="header">
+
+                <div class="icon">
+                    🥔
+                </div>
+
+                <h1>Potato Disease Detection</h1>
+
+                <p>
+                    Upload a potato leaf image and let the AI
+                    detect possible disease.
+                </p>
+
+            </div>
+
+
+            <!-- Upload Form -->
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+
+                <div class="upload-box">
+
+                    <div class="upload-icon">
+                        📷
+                    </div>
+
+                    <label for="image">
+                        Choose Potato Leaf Image
+                    </label>
+
+                    <p>
+                        JPG, JPEG or PNG
+                    </p>
+
+                    <input type="file" id="image" name="image" accept="image/*" required>
+
+                </div>
+
+
+                <button type="submit">
+                    🔍 Predict Disease
+                </button>
+
+            </form>
+
+
+            <!-- Prediction Result -->
+            {% if prediction %}
+
+            <div class="result">
+
+                <h2>Prediction Result</h2>
+
+
+                <!-- Uploaded Image -->
+                <img src="{{ url_for(
+                        'static',
+                        filename='uploads/' + image_path.split('/')[-1]
+                    ) }}" class="uploaded-image" alt="Uploaded potato leaf">
+
+
+                <!-- Disease -->
+                <div class="prediction-box">
+
+                    <p class="result-label">
+                        Detected Condition
+                    </p>
+
+                    <h3 class="disease">
+                        🌿 {{ prediction }}
+                    </h3>
+
+                    <p class="confidence">
+                        Confidence:
+                        <strong>{{ confidence }}%</strong>
+                    </p>
+
+                </div>
+
+
+                <!-- Information -->
+                <div class="info">
+
+                    <h3>About the Result</h3>
+
+                    <p>
+                        {{ description }}
+                    </p>
+
+
+                    <h3>General Advice</h3>
+
+                    <p>
+                        {{ advice }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Footer -->
+        <p class="footer">
+            Powered by TensorFlow & Flask
+        </p>
+
+    </div>
+
+</body>
+
+</html>
