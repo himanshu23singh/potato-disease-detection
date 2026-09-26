@@ -1,4 +1,4 @@
-# data set lint = https://drive.google.com/drive/folders/1xS-2y3CkaggqIPwRWo11yanjWuGjol-P?usp=sharing
+data set link = https://drive.google.com/drive/folders/1xS-2y3CkaggqIPwRWo11yanjWuGjol-P?usp=sharing
 # 🥔 Potato Disease Detection
 
 A machine learning web application that detects potato leaf diseases from uploaded images using TensorFlow and Flask.
